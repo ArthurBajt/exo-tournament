@@ -1,6 +1,9 @@
 package me.guillaume.recruitment.tournament;
 
 
+import me.guillaume.recruitment.tournament.Fighter.Highlander;
+import me.guillaume.recruitment.tournament.Fighter.Swordsman;
+import me.guillaume.recruitment.tournament.Fighter.Viking;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
