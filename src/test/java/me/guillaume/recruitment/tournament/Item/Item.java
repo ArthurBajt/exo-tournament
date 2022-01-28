@@ -1,5 +1,7 @@
 package me.guillaume.recruitment.tournament.Item;
 
+import me.guillaume.recruitment.tournament.Fighter.EnumFighterWeapons;
+
 public abstract class Item {
     protected int turnCount = 0;
 
@@ -7,7 +9,7 @@ public abstract class Item {
     public Item(){}
 
 
-    public int damageMultiplier(int value){
+    public int damageMultiplier(int value, EnumFighterWeapons weapon){
         return value;
     }
 
@@ -18,7 +20,7 @@ public abstract class Item {
 
 
     public void incrementTurn(){
-        this.turnCount++;
+        this.turnCount += 1;
     }
 
 

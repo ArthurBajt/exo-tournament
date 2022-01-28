@@ -1,5 +1,6 @@
 package me.guillaume.recruitment.tournament.Fighter;
 
+import me.guillaume.recruitment.tournament.Item.Buckler;
 import me.guillaume.recruitment.tournament.Item.Item;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public abstract class Fighter {
     protected int hitPoints;
     protected int damages;
     protected List<Item> items = new ArrayList<Item>();
+    protected EnumFighterWeapons weapon;
     protected int turnCount = 0;
 
 
@@ -27,24 +29,17 @@ public abstract class Fighter {
         enemy.takeDamage(this, this.damages);
     }
 
-    public void attack(Fighter enemy){
-
-    }
-
 
     public void takeDamage(Fighter from, int value){
         int damageRecieve = value;
         for (Item item : this.items){
-            damageRecieve = item.damageMultiplier(damageRecieve);
+            damageRecieve = item.damageMultiplier(damageRecieve, from.getWeapon());
         }
         this.hitPoints = Math.max(0, this.hitPoints - damageRecieve);
 
         if (this.isAlive()){
+            this.incrementTurn();
             from.takeDamage(this, this.getDamage());
-        }
-
-        for (Item item : this.items){
-            item.incrementTurn();
         }
 
     }
@@ -58,6 +53,20 @@ public abstract class Fighter {
     }
 
     public Fighter equip(String objectName){
+        Item item = null;
+
+        switch (objectName){
+            case "buckler":
+                item = new Buckler();
+                break;
+
+            default:
+                System.err.println("Could not equip the fighter with item named : " + objectName);
+        }
+
+        if (item != null){
+            this.items.add(item);
+        }
         return this;
     }
 
@@ -76,6 +85,11 @@ public abstract class Fighter {
         for (Item item : this.items){
             item.incrementTurn();
         }
+    }
+
+
+    public EnumFighterWeapons getWeapon(){
+        return this.weapon;
     }
 
 }

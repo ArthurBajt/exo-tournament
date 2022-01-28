@@ -13,6 +13,7 @@ public class Highlander extends Fighter{
 
     @Override
     public Highlander equip(String objectName) {
+        super.equip(objectName);
         return this;
     }
 }
