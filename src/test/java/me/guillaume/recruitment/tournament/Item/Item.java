@@ -3,7 +3,7 @@ package me.guillaume.recruitment.tournament.Item;
 import me.guillaume.recruitment.tournament.Fighter.EnumFighterWeapons;
 
 public abstract class Item {
-    protected int turnCount = 0;
+    protected int turnCount = -1;
 
 
     public Item(){}
