@@ -72,7 +72,7 @@ public class TournamentTest {
                 .equip("armor");
 
         swordsman.engage(highlander);
-        
+
         assertThat(swordsman.hitPoints()).isEqualTo(0);
         assertThat(highlander.hitPoints()).isEqualTo(10);
 

@@ -10,7 +10,7 @@ public class Buckler extends Item{
 
     @Override
     public int damageMultiplier(int value, EnumFighterWeapons weapon) {
-        if (((this.turnCount) % 2) == 0 && this.axeBlowCount <= 3){
+        if (((this.turnCount) % 2) == 0 && this.axeBlowCount < 3){
             if (weapon == EnumFighterWeapons.AXE){
                 this.axeBlowCount += 1;
             }
